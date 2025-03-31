@@ -23,6 +23,5 @@ maintainers:
 icon: https://raw.githubusercontent.com/traefik/traefik/v2.3/docs/content/assets/img/traefik.logo.png
 annotations:
   artifacthub.io/changes: |
-    - "fix(chart): reorder source urls annotations"
-    - "feat(CRDs-schema): add `global` and `enabled` placeholders for subchart/dependency"
-    - "chore(CRDs-release): 🔧 publish v1.5.0"
+    - "chore: update CRDs to v1.17.2"
+    - "chore: publish 1.6.0"
