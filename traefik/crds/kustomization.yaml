@@ -6,6 +6,7 @@ resources:
   - gateway-standard-install.yaml
   - hub.traefik.io_accesscontrolpolicies.yaml
   - hub.traefik.io_apicatalogitems.yaml
+  - hub.traefik.io_managedapplications.yaml
   - hub.traefik.io_managedsubscriptions.yaml
   - hub.traefik.io_apiportals.yaml
   - hub.traefik.io_apiratelimits.yaml

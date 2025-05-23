@@ -6,6 +6,7 @@ resources:
   - crds-files/gatewayAPI/gateway-standard-install.yaml
   - crds-files/hub/hub.traefik.io_accesscontrolpolicies.yaml
   - crds-files/hub/hub.traefik.io_apicatalogitems.yaml
+  - crds-files/hub/hub.traefik.io_managedapplications.yaml
   - crds-files/hub/hub.traefik.io_managedsubscriptions.yaml
   - crds-files/hub/hub.traefik.io_apiportals.yaml
   - crds-files/hub/hub.traefik.io_apiratelimits.yaml
