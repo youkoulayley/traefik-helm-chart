@@ -1309,6 +1309,40 @@ hub:
         insecureSkipVerify: false
         # -- TLS key
         key: ""
+    nutanixPrismCentral:
+      # -- Enable Nutanix Prism Central provider.
+      enabled: false
+      # -- Prism Central endpoint (including scheme: http:// or https://).
+      endpoint: ""
+      # -- Prism Central API key (mutually exclusive with username/password).
+      apiKey: ""
+      # -- Prism Central username for basic authentication (requires password).
+      username: ""
+      # -- Prism Central password for basic authentication (requires username).
+      password: ""
+      # -- Polling interval for Prism Central API. Default: 30s.
+      pollInterval: 30
+      # -- Polling timeout for Prism Central API. Default: 5s.
+      pollTimeout: 5
+      # -- Category key for service name. Default: TraefikServiceName.
+      serviceNameCategoryKey: "TraefikServiceName"
+      # -- Category key for service port. Default: TraefikServicePort.
+      servicePortCategoryKey: "TraefikServicePort"
+      # -- Category key for load balancer strategy. Default: TraefikLoadBalancerStrategy.
+      loadBalancerStrategyCategoryKey: "TraefikLoadBalancerStrategy"
+      # -- Filter VMs by VPCs. List of VPC UUIDs to allow.
+      allowedVPCs: []
+      # - uuid: "vpc-uuid-1"
+      # - uuid: "vpc-uuid-2"
+      tls:
+        # -- TLS CA
+        ca: ""
+        # -- TLS cert
+        cert: ""
+        # -- TLS insecure skip verify
+        insecureSkipVerify: false
+        # -- TLS key
+        key: ""
   redis:
     # -- Enable Redis Cluster. Default: true.
     cluster:    # @schema type:[boolean, null]

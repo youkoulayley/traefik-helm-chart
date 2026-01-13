@@ -261,6 +261,17 @@ Hash: {{ sha1sum ($cert.Cert | b64enc) }}
     {{- range $key, $value := .content -}}
         {{- if kindIs "map" $value }}
             {{- include "traefik.yaml2CommandLineArgsRec" (dict "path" (printf "%s.%s" $path $key) "content" $value) -}}
+        {{- else if kindIs "slice" $value }}
+            {{- $firstElem := first $value -}}
+            {{- if kindIs "map" $firstElem }}
+                {{- range $index, $elem := $value }}
+                    {{- include "traefik.yaml2CommandLineArgsRec" (dict "path" (printf "%s.%s[%d]" $path $key $index) "content" $elem) -}}
+                {{- end }}
+            {{- else }}
+                {{- with $value  }}
+--{{ join "." (list $path $key)}}={{ join "," $value }}
+                {{- end -}}
+            {{- end -}}
         {{- else }}
             {{- with $value  }}
 --{{ join "." (list $path $key)}}={{ join "," $value }}

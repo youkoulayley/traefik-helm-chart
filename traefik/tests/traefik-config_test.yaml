@@ -1244,6 +1244,92 @@ tests:
       - contains:
           path: spec.template.spec.containers[0].args
           content: "--hub.providers.consulCatalogEnterprise.watch=true"
+  - it: should be possible to configure Traefik Hub nutanixPrismCentral provider
+    set:
+      image:
+        tag: v3.9.0
+      hub:
+        token: "xxx"
+        providers:
+          nutanixPrismCentral:
+            enabled: true
+            endpoint: "https://prism.example.com"
+            apiKey: "api-key-xxx"
+            pollInterval: 60
+            pollTimeout: 10
+            serviceNameCategoryKey: "ServiceName"
+            servicePortCategoryKey: "ServicePort"
+            loadBalancerStrategyCategoryKey: "LBStrategy"
+            allowedVPCs:
+              - uuid: "vpc-uuid-1"
+              - uuid: "vpc-uuid-2"
+            tls:
+              ca: "ca-cert"
+              cert: "client-cert"
+              key: "client-key"
+              insecureSkipVerify: true
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.endpoint=https://prism.example.com"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.apiKey=api-key-xxx"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.pollInterval=60"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.pollTimeout=10"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.serviceNameCategoryKey=ServiceName"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.servicePortCategoryKey=ServicePort"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.loadBalancerStrategyCategoryKey=LBStrategy"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.allowedVPCs[0].uuid=vpc-uuid-1"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.allowedVPCs[1].uuid=vpc-uuid-2"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.tls.ca=ca-cert"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.tls.cert=client-cert"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.tls.key=client-key"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.tls.insecureSkipVerify=true"
+  - it: should be possible to configure Traefik Hub nutanixPrismCentral provider with basic auth
+    set:
+      image:
+        tag: v3.9.0
+      hub:
+        token: "xxx"
+        providers:
+          nutanixPrismCentral:
+            enabled: true
+            endpoint: "https://prism.example.com"
+            username: "admin"
+            password: "password123"
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.endpoint=https://prism.example.com"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.username=admin"
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: "--hub.providers.nutanixPrismCentral.password=password123"
   - it: should be possible to configure Traefik Hub plugin sources
     set:
       image:

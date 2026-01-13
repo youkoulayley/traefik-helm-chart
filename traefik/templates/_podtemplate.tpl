@@ -923,6 +923,9 @@
             {{- if .providers.microcks.enabled }}
               {{- include "traefik.yaml2CommandLineArgs" (dict "path" "hub.providers.microcks" "content" (omit $.Values.hub.providers.microcks "enabled")) | nindent 10 }}
             {{- end }}
+            {{- if .providers.nutanixPrismCentral.enabled }}
+              {{- include "traefik.yaml2CommandLineArgs" (dict "path" "hub.providers.nutanixPrismCentral" "content" (omit $.Values.hub.providers.nutanixPrismCentral "enabled")) | nindent 10 }}
+            {{- end }}
           {{- end }}
           {{- with .pluginRegistry.sources }}
           - "--hub.pluginregistry=true"
